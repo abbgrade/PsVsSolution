@@ -23,14 +23,14 @@ function Get-Project {
 
         [Guid] $typeId = $ProjectGroups | Where-Object Name -eq typeId | Select-Object -ExpandProperty Value
 
-        $ProjectDetails = $definition | Select-String -Pattern '"(?<name>.*)", "(?<path>.*)", "\{(?<id>.*)\}"' | 
+        $ProjectDetails = $definition | Select-String -Pattern '"(?<name>.*)", "(?<relativePath>.*)", "\{(?<id>.*)\}"' | 
         Select-Object -ExpandProperty Matches |
         Select-Object -ExpandProperty Groups
 
         [string] $name = $ProjectDetails | Where-Object Name -eq name | Select-Object -ExpandProperty Value
 
-        [string] $path = $ProjectDetails | Where-Object Name -eq path | Select-Object -ExpandProperty Value
-
+        $relativePath = ( $ProjectDetails | Where-Object Name -eq relativePath | Select-Object -ExpandProperty Value )
+        
         [Guid] $id = $ProjectDetails | Where-Object Name -eq id | Select-Object -ExpandProperty Value
 
         $Project = [PSCustomObject]@{
@@ -38,8 +38,9 @@ function Get-Project {
             Name = $name
         }
 
-        if ($path -ne $name) {
-            $Project | Add-Member Path $path
+        if ($relativePath -ne $name) {
+            [System.IO.FileInfo] $fullPath = Join-Path $SolutionPath.Directory $relativePath
+            $Project | Add-Member Path $fullPath
             $Project | Add-Member Type 'Project'
         } else {
             $Project | Add-Member Type 'Folder'
