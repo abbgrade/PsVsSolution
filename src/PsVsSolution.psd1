@@ -30,7 +30,7 @@ CompanyName = 'Unknown'
 Copyright = '(c) Steffen Kampmann. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'Module to work with Visual Studio solutions'
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
@@ -95,13 +95,13 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        Tags = @('visualstudio', 'sln')
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://github.com/abbgrade/PsVsSolution/blob/master/LICENSE'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/abbgrade/PsVsSolution'
 
         # A URL to an icon representing this module.
         # IconUri = ''
