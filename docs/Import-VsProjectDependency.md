@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-VsProject
+# Import-VsProjectDependency
 
 ## SYNOPSIS
 {{ Fill in the Synopsis }}
@@ -13,7 +13,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-Get-VsProject [-SolutionPath] <FileInfo> [<CommonParameters>]
+Import-VsProjectDependency [-ProjectPath] <FileInfo> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,8 +30,8 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -SolutionPath
-{{ Fill SolutionPath Description }}
+### -ProjectPath
+{{ Fill ProjectPath Description }}
 
 ```yaml
 Type: FileInfo
@@ -41,7 +41,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -50,7 +50,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.IO.FileInfo
 
 ## OUTPUTS
 
